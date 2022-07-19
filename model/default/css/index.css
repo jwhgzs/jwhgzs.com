@@ -1,0 +1,391 @@
+/* 全局css */
+
+/* ---------------------------------------------------------------------------------
+   -------------------------------- 原生组件修饰css --------------------------------
+   --------------------------------------------------------------------------------- */
+/* 自研去vue闪烁 */
+body:not([data-v-app]) {
+    display: none;
+}
+body {
+    margin: 7px !important;
+    
+    /* 去除移动端讨厌的蓝框，参考：https://blog.csdn.net/baidu_35290582/article/details/120177578 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    
+    /* 去除横向滚动条 */
+    overflow-x: hidden;
+}
+/* 去除移动端讨厌的蓝框，参考同上 */
+a:focus, input:focus, p:focus, div:focus{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+/* 去除input的增减微调器，参考：https://blog.csdn.net/as515515/article/details/101104574 */
+input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+/* ---------------------------------------------------------------------------------
+   -------------------------------- 基本组件修饰css --------------------------------
+   --------------------------------------------------------------------------------- */
+.fa, .fab, .fad, .fal, .far, .fas {
+    line-height: unset !important;
+}
+.el-dialog {
+    /* dialog居中解决方案参考：https://blog.csdn.net/weixin_30776863/article/details/98999688 */
+    max-width: 100%;
+    width: 20rem !important;
+    margin: 0 !important;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+}
+.el-menu {
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+.el-menu-item {
+    color: black !important;
+}
+/* 这里根据优先权值，用跟elementplus源代码一毛一样的选择器，后声明的优先级高 */
+.el-menu--horizontal>.el-menu-item.is-active {
+    /* 预留一个2px的假边框（看不见），因为原来.el-menu-item是有一个2px的边框的，直接把边框设置none会导致整体下降2px，怪怪的 */
+    border-bottom: 2px solid rgba(255, 255, 255, 0) !important;
+    color: black !important;
+}
+.el-tag {
+    height: auto;
+    line-height: 24px;
+    padding: 2px 10px;
+    white-space: pre-wrap !important;
+}
+.el-tag--large {
+    padding: 8px 13px;
+    font-size: calc(var(--el-tag-font-size) * 1.1);
+}
+.el-tag--small {
+    padding: 0 8px;
+    font-size: calc(var(--el-tag-font-size) * 0.9);
+}
+.el-form-item__error {
+    position: static !important;
+}
+.el-link {
+    font-size: inherit !important;
+}
+.el-message-box__input .el-textarea__inner {
+    width: 300px;
+    max-width: 80vw;
+    height: 100px;
+}
+.el-input-group__append {
+    /* 防止text按钮背景色挡住边框 */
+    padding-right: 21px;
+}
+.el-menu-item {
+    background-color: white;
+    padding: 0 0 !important;
+}
+.el-menu-item:hover {
+    background: none !important;
+}
+.el-menu-item.is-active {
+    background: none !important;
+}
+
+/* -----------------------------------------------------------------------------------------
+   -------------------------------- 特定组件修饰（可选）css --------------------------------
+   ----------------------------------------------------------------------------------------- */
+.elrow_nowrap {
+    flex-wrap: nowrap !important;
+}
+.imgAwesome {
+    vertical-align: middle;
+}
+.aAwesome {
+    text-decoration: none;
+    color: inherit;
+}
+.aAwesomeX {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.aAwesomeY a {
+    color: gray !important;
+    font-weight: bold;
+    margin: 0 5px;
+}
+.aAwesome2 {
+    /* a标签锚点偏移（因为顶上的bar占了高度），参考：https://www.itdaan.com/blog/2017/09/07/e6675f0fbe4c2cb134a7c0a94c9e520f.html */
+    position: relative;
+    top: calc(0px - 55px - 35px);
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+.spanAwesome {
+    display: inline-block;
+}
+
+/* -------------------------------------------------------------------------------------------
+   -------------------------------- 非特定组件修饰（可选）css --------------------------------
+   ------------------------------------------------------------------------------------------- */
+.authed_uname {
+    /* 实现字体渐变效果，参考：Vue3.0官网https://vuejs.org/ */
+    /* 动态渐变效果，参考：https://www.jb51.net/css/705531.html */
+    background: linear-gradient(to right, #544a7d, #ffd452, #544a7d);
+    background-size: 400%;
+    animation: authed_uname_animation 5s infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+@keyframes authed_uname_animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+.rotate {
+    transition: 0.5s;
+    animation: rotate 1s linear infinite;
+}
+/* 旋转参考：https://blog.csdn.net/qq_38674970/article/details/80015148 */
+@keyframes rotate{
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+    	transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
+}
+.hcenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+.hcenter2 {
+    text-align: center;
+}
+.vcenter {
+    display: flex;
+    align-items: center;
+}
+.centerX {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------------------------------------------------------------------------
+   -------------------------------- 页面公共部分css --------------------------------
+   --------------------------------------------------------------------------------- */
+.nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    opacity: 97%;
+    
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    background-color: #FFF;
+    white-space: nowrap;
+}
+.mainnav {
+    height: 54px;
+    
+    /* 设高基操居中（纵） */
+    line-height: 55px;
+    border-bottom: 1px solid #ddd;
+    padding-left: 10px;
+}
+.subnav {
+    height: 35px;
+    
+    padding: 0 20px;
+    line-height: 35px;
+}
+.logo_banner {
+    /* 强制居中 45px+5px+5px=55px */
+    padding-top: 5px;
+    height: 45px;
+    padding-bottom: 5px;
+}
+.nav_userinfo {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    
+    line-height: 55px;
+    font-size: 80%;
+}
+.nav_userinfo_name {
+    margin-left: 10px;
+    
+    color: gray;
+}
+.nav_breadcrumb {
+    margin-left: 10px;
+    
+    font-size: 80%;
+    line-height: inherit;
+}
+.nav_menu {
+    position: fixed;
+    top: 55px;
+    right: 0;
+    height: 35px;
+    
+    border-bottom: none !important;
+}
+.nav_a {
+    text-decoration: none;
+    line-height: 20px;
+    text-align: center;
+}
+.nav_a_span {
+    margin-left: 10px;
+    font-size: 80%;
+}
+.block {
+    height: calc(55px + 35px + 20px);
+    width: 100%;
+}
+.tail {
+    position: absolute;
+    margin-top: 40px;
+    left: 0;
+    width: calc(100% - 20px * 2);
+    
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    padding: 20px;
+    background-color: #EFF5FB;
+    text-align: center;
+    color: gray;
+}
+.tail {
+    font-size: 80%;
+}
+.tail_div {
+    margin-top: 10px;
+}
+.tail_link {
+    margin-left: 15px;
+}
+.tail_linklogo {
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* ----------------------------------------------------------------------------------------------------
+   -------------------------------- 自定义伪组件（只依赖css的组件）css --------------------------------
+   ---------------------------------------------------------------------------------------------------- */
+.box {
+    /* 嘿嘿，这个shadow阴影我偷的， */
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+    border-radius: 15px;
+    background-color: white;
+    opacity: 93%;
+    padding: 35px;
+}
+.box_sm {
+    max-width: 25rem;
+}
+.box_md {
+    max-width: 40rem;
+}
+.box_ml {
+    max-width: 60em;
+}
+.box_lg {
+    max-width: 100%;
+}
+.box_title {
+    margin-right: 15px;
+    
+    font-size: 46px;
+    font-weight: bold;
+    color: #409EFF;
+}
+.box_graytitle {
+    color: #C0C4CC;
+    font-size: 26px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+.box_tip {
+    margin-top: 20px;
+    padding-top: 10px;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    
+    font-weight: bold;
+    font-size: 80%;
+    color: #ccc;
+}
+.box_tip2 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    
+    font-weight: bold;
+    font-size: 80%;
+    color: #ccc;
+}
+.box_tip3 {
+    font-weight: bold;
+    font-size: 80%;
+    color: #ccc;
+}
+.group {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #F1F1F1;
+    background-color: #FAFAFA;
+}
+.group_btns {
+    margin-bottom: -10px;
+}
+.btns {
+    margin: 0 10px 10px 0 !important;
+}
+.btns2 {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.btnsX {
+    cursor: pointer;
+}
+.bkg {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+}
+.customAvatar {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

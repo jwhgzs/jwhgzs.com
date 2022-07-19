@@ -1,0 +1,10 @@
+.useravatar_erricon {
+    font-size: calc(var(--el-avatar-size) / 2);
+}
+.userinfobox_uname {
+    color: gray;
+}
+.userinfobox_time {
+    color: gray;
+    font-size: 80%;
+}

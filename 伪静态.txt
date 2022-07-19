@@ -1,0 +1,8 @@
+# 主站
+location ~ {
+  try_files 一个不可能存在的文件 index.php?__url=$uri&$args;
+}
+# 静态站
+location ~ {
+  add_header Access-Control-Allow-Origin *;
+}
