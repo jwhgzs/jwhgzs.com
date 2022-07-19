@@ -1,4 +1,5 @@
 <?php
+    // test
     require_once __DIR__ . '/config/index.php';
     require_once __DIR__ . '/require/index.php';
     
